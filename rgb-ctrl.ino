@@ -4,14 +4,14 @@
 RotaryEncoder encoder(3,4);
 RgbLight strip(9,10,11)
 
-ISR(PCINT2_vect)
+ISR(PCINT2_vect) //interrupt routine for rotary encoder
 {
     encoder.tick();
 }
 
 void setup()
 {
-    // interrupts for rotary encoder
+    //setting interrupts for rotary encoder
     PCICR |= (1 << PCIE2);
     PCMSK2 |= (1 << PCINT19) | (1 << PCINT20);
 
